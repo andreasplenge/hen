@@ -1,0 +1,13 @@
+- firstname: Andreas
+  lastname: Plenge
+  identity: Decision Systems Engineer
+  description: | 
+    Quantitative and analytical engineer with strong expertise in stochastic modeling, data-driven optimization, and scalable algorithmic systems. Skilled in Python, SQL, and probabilistic modeling, with experience in real-time control, forecasting, and data governance. Passionate about leveraging mathematical and software expertise to solve complex problems in performance sensitive systems.
+  about: |
+    I combine a strong foundation in mathematics with software engineering to design performance-critical algorithmic systems. I specialize in stochastic modeling, real-time control, and scalable optimization.
+  email: andreas.p.andreasen@gmail.com
+  linkedin: andreasplenge
+  website: www.andreasplenge.com
+  phone_number: "+45 52 99 06 66"
+  other_websites:
+    - www.metalværk.dk

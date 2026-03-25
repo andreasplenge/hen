@@ -1,0 +1,22 @@
+- native_language: Danish
+  fluent_languages: [English]
+  professional_language: []
+
+  core_expertise:
+    - Optimization Under Uncertainty
+    - Real-Time Algorithmic Control
+    - Distributed Energy Market Systems
+    - Probabilistic Graph Algorithms
+    - Performance-Critical Software Architecture
+  mathematical_foundation:
+    - PDE Theory
+    - Stochastic Calculus
+    - Dynamical Systems
+    - Probability & Statistical Modeling
+  implementation_stack:
+    - Python
+    - TypeScript
+    - SQL / NoSQL
+    - TensorFlow / PyTorch
+    - Kubernetes / Docker
+    - MQTT & Event-Driven Systems

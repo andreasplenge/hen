@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Corporate design system — refined navy, warm undertones, editorial elegance */
+
+@layer base {
+  :root {
+    --background: 220 18% 97%;
+    --foreground: 220 30% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 14%;
+
+    /* Deep corporate navy with warmth */
+    --primary: 220 55% 28%;
+    --primary-foreground: 40 20% 98%;
+
+    --secondary: 220 12% 94%;
+    --secondary-foreground: 220 25% 22%;
+
+    --muted: 220 10% 92%;
+    --muted-foreground: 220 10% 46%;
+
+    --accent: 35 40% 92%;
+    --accent-foreground: 220 30% 14%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 12% 86%;
+    --input: 220 12% 90%;
+    --ring: 220 55% 28%;
+
+    --radius: 0.375rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 25% 22%;
+    --sidebar-primary: 220 55% 28%;
+    --sidebar-primary-foreground: 40 20% 98%;
+    --sidebar-accent: 220 12% 94%;
+    --sidebar-accent-foreground: 220 30% 14%;
+    --sidebar-border: 220 12% 86%;
+    --sidebar-ring: 220 55% 28%;
+  }
+
+  .dark {
+    --background: 220 20% 8%;
+    --foreground: 220 10% 90%;
+
+    --card: 220 18% 11%;
+    --card-foreground: 220 10% 90%;
+
+    --popover: 220 18% 11%;
+    --popover-foreground: 220 10% 90%;
+
+    --primary: 220 55% 65%;
+    --primary-foreground: 220 20% 8%;
+
+    --secondary: 220 15% 16%;
+    --secondary-foreground: 220 10% 82%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 52%;
+
+    --accent: 220 15% 16%;
+    --accent-foreground: 220 10% 90%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 18%;
+    --ring: 220 55% 65%;
+
+    --radius: 0.375rem;
+
+    --sidebar-background: 220 18% 11%;
+    --sidebar-foreground: 220 10% 82%;
+    --sidebar-primary: 220 55% 65%;
+    --sidebar-primary-foreground: 220 20% 8%;
+    --sidebar-accent: 220 15% 16%;
+    --sidebar-accent-foreground: 220 10% 90%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 220 55% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: 'DM Serif Display', serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .hover-lift:hover {
+    @apply -translate-y-0.5 shadow-soft;
+  }
+
+  /* Staggered fade-in animation */
+  .fade-in-section {
+    animation: fadeInUp 0.5s ease-out both;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

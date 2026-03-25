@@ -1,0 +1,21 @@
+- name: Mathematics
+  degree: BSc
+  year: 2018
+  specialization: mathematical finance
+  location: Copenhagen, Denmark
+  short: | 
+    With a focus on stochastic calculus, probability theory and differential theory.
+  description: |    
+    Developed a strong foundation in continuous-time modeling and analytical methods.
+
+  thesis: Explored the connection between the heat equation and Brownian motion, combining advanced concepts in probability and differential equations.
+  core_expertise: []
+  mathematical_foundation: 
+    - PDE Theory
+    - Stochastic Calculus
+    - Dynamical Systems
+    - Probability & Statistical Modeling
+  implementation_stack: [R]
+  
+  id: 1
+  organization_id: 3

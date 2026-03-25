@@ -1,0 +1,23 @@
+- name: Software Design
+  location: Copenhagen, Denmark
+  degree: MSc
+  year: 2024
+  specialization: machine learning
+  thesis: Proposed a machine learning algorithm for the k-approximate nearest neighbors problem, applying a hierarchical structure to inverted file indexes using k-means clustering.
+  short: | 
+    With a focus on ML and large-scale algorithm design, with focus on approximate nearest neighbor search and probabilistic optimization.
+  description: |
+    Strengthened systems-level programming skills on a rigorous mathematical foundation.
+
+  core_expertise: 
+    - Probabilistic Graph Algorithms
+  mathematical_foundation: 
+    - Probability & Statistical Modeling
+  implementation_stack:
+    - Python
+    - Java
+    - F#
+    - TensorFlow / PyTorch
+
+  id: 3
+  organization_id: 4

@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Deep charcoal base - mathematical elegance */
+    --background: 220 20% 6%;
+    --foreground: 220 10% 92%;
+
+    --card: 220 18% 8%;
+    --card-foreground: 220 10% 92%;
+
+    --popover: 220 18% 8%;
+    --popover-foreground: 220 10% 92%;
+
+    /* Subtle cyan-tinted accent for techy feel */
+    --primary: 185 60% 60%;
+    --primary-foreground: 220 20% 6%;
+
+    --secondary: 220 15% 12%;
+    --secondary-foreground: 220 10% 85%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 220 15% 12%;
+    --accent-foreground: 220 10% 92%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 220 10% 92%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 15%;
+    --ring: 185 60% 60%;
+
+    --radius: 0;
+
+    --sidebar-background: 220 18% 8%;
+    --sidebar-foreground: 220 10% 85%;
+    --sidebar-primary: 185 60% 60%;
+    --sidebar-primary-foreground: 220 20% 6%;
+    --sidebar-accent: 220 15% 12%;
+    --sidebar-accent-foreground: 220 10% 92%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 185 60% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}

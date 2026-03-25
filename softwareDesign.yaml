@@ -1,0 +1,13 @@
+
+- education_id: 3
+  courses: [
+    Advanced Machine Learning,
+    Advanced Vector Spaces,
+    Cryptography,
+    Introduction To Mathematical Logic,
+    Functional Programming,
+    Algorithms and Data Structures,
+    Introduction to Database Systems,
+    Software Engineering,
+    Introductory Programming
+    ]

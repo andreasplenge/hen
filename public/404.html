@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+      // Redirect to the hash-based route
+      const path = window.location.pathname;
+      const repo = '/cv';
+      if (path.startsWith(repo)) {
+        const route = path.slice(repo.length);
+        window.location.replace(repo + '/#' + route);
+      }
+    </script>
+  </head>
+  <body>
+    Redirecting...
+  </body>
+</html>

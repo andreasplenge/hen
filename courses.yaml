@@ -1,0 +1,9 @@
+- education_id: 1
+  courses: [
+    Introduction to Mathematical Subjects, 
+    Introduction to Economics, 
+    Linear Algebra, 
+    Probability and Statistics, 
+    Analysis 0, 
+    Analysis 1
+    ]
