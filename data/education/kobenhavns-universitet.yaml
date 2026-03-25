@@ -6,7 +6,11 @@
   location: Copenhagen, Denmark
   specialization:
   thesis:
-  skills:
+  short: |
+    Studies in mathematics and economics.
+  core_expertise:
     - Economics
     - Mathematics
     - Problem Solving
+  mathematical_foundation: []
+  implementation_stack: []

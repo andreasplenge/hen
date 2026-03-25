@@ -4,9 +4,13 @@
   start: "2008"
   end: "2010"
   location: Denmark
+  short: |
+    Customer service and operational support in a retail environment.
   description: |
     Customer service and operational support in a retail environment.
-  skills:
+  core_expertise:
     - Customer Service
     - Attention to Detail
     - Problem Solving
+  mathematical_foundation: []
+  implementation_stack: []

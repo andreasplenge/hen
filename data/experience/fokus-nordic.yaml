@@ -4,16 +4,19 @@
   start: November 2023
   end: February 2024
   location: Copenhagen, Denmark
+  short: |
+    Financial controlling and oversight of financial processes and reporting.
   description: |
     Financial controlling and oversight of financial processes, reporting and compliance.
-  tools:
-    - Excel
-    - Dynamics 365
-  skills:
+  core_expertise:
     - Financial Controlling
     - Financial Reporting
-    - Budgeting
+    - Budgeting & Forecasting
     - Economics
+  mathematical_foundation: []
+  implementation_stack:
+    - Excel
+    - Dynamics 365
 
 - id: 16
   organization_id: 11
@@ -21,19 +24,21 @@
   start: June 2022
   end: February 2024
   location: Copenhagen, Denmark
+  short: |
+    Comprehensive financial accounting, analysis and controlling responsibilities.
   description: |
     Comprehensive financial accounting, analysis, and controlling responsibilities across the organization, including management reporting and financial statement preparation.
-  tools:
-    - Excel
-    - Dynamics 365
-    - SAP
-  skills:
+  core_expertise:
     - Financial Accounting
     - Financial Analysis
     - Financial Controlling
-    - Budgeting
-    - Forecasting
+    - Budgeting & Forecasting
     - Financial Reporting
     - Management Accounting
     - Accounts Receivable
     - Accounts Payable
+  mathematical_foundation: []
+  implementation_stack:
+    - Excel
+    - Dynamics 365
+    - SAP

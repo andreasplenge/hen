@@ -6,11 +6,14 @@
   location: Copenhagen, Denmark
   specialization:
   thesis:
-  skills:
+  short: |
+    Two-year programme in financial management, accounting and business economics.
+  core_expertise:
     - Financial Management
     - Financial Accounting
     - Financial Analysis
     - Financial Forecasting
-    - Financial Data
-    - Budgeting
+    - Budgeting & Forecasting
     - Economics
+  mathematical_foundation: []
+  implementation_stack: []

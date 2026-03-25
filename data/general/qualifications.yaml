@@ -2,24 +2,22 @@
   fluent_languages: [English, German]
   professional_language: []
 
-  programming:
-    - Excel
-    - Power BI
-    - Python
-    - SQL
-
-  tools:
-    - SAP
-    - Dynamics 365
-    - Caseware
-    - Bloomberg
-
-  skills:
+  core_expertise:
     - Financial Analysis
     - Auditing
     - Financial Reporting
-    - Budgeting
-    - Forecasting
+    - Budgeting & Forecasting
     - IFRS
     - Management Accounting
     - Financial Controlling
+
+  mathematical_foundation: []
+
+  implementation_stack:
+    - Excel
+    - Power BI
+    - SAP
+    - Dynamics 365
+    - Python
+    - SQL
+    - Caseware

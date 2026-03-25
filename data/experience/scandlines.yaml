@@ -4,17 +4,18 @@
   start: March 2024
   end: Present
   location: Copenhagen, Denmark
+  short: |
+    Monthly reporting, budgeting and forecasting. Building state of the art reporting infrastructure.
   description: |
     Monthly reporting, budgeting and forecasting. Enhancing existing systems and building state of the art reporting infrastructure for the organization.
-  tools:
-    - Power BI
-    - Excel
-    - SAP
-  skills:
+  core_expertise:
     - Financial Reporting
-    - Budgeting
-    - Forecasting
+    - Budgeting & Forecasting
     - Financial Analysis
     - Business Intelligence
     - Economics
-    - Analytical Skills
+  mathematical_foundation: []
+  implementation_stack:
+    - Power BI
+    - Excel
+    - SAP

@@ -8,6 +8,7 @@ import {
   useCVOrganizations,
   getHighlightedSkillsByType,
   type CVExperience,
+  type CVEducation,
   type CVOrganization,
 } from "@/hooks/use-cv-data";
 
@@ -19,6 +20,25 @@ function parseEndDate(end: string): Date {
   if (end.toLowerCase() === "present") return new Date(9999, 11);
   const d = new Date(end);
   return isNaN(d.getTime()) ? new Date(0) : d;
+}
+
+interface EducationGroup {
+  institution: string;
+  organization_id: string | null;
+  entries: CVEducation[];
+}
+
+function groupEducation(entries: CVEducation[]): EducationGroup[] {
+  const map = new Map<string, EducationGroup>();
+  const sorted = [...entries].sort((a, b) => b.year - a.year);
+  for (const edu of sorted) {
+    const key = edu.organization_id ?? edu.institution;
+    if (!map.has(key)) {
+      map.set(key, { institution: edu.institution, organization_id: edu.organization_id, entries: [] });
+    }
+    map.get(key)!.entries.push(edu);
+  }
+  return [...map.values()];
 }
 
 interface ExperienceGroup {
@@ -84,6 +104,7 @@ const CV = () => {
     .sort((a, b) => (a.highlight_order ?? 0) - (b.highlight_order ?? 0));
 
   const experienceGroups = groupExperiences(experience ?? [], organizations ?? []);
+  const educationGroups = groupEducation(education ?? []);
 
   const coreExpertise = technicalDomains ? getHighlightedSkillsByType(technicalDomains, "core_expertise") : [];
   const mathFoundation = technicalDomains ? getHighlightedSkillsByType(technicalDomains, "mathematical_foundation") : [];
@@ -99,21 +120,15 @@ const CV = () => {
         {highlightedOrgs.length > 0 && (
           <div className="mb-14 fade-in-section">
             <div className="flex flex-wrap items-center gap-10">
-              {highlightedOrgs.map((org) =>
-                org.logo ? (
-                  <img
-                    key={org.id}
-                    src={org.logo}
-                    alt={org.name}
-                    title={org.name}
-                    className="h-8 object-contain opacity-50 hover:opacity-80 transition-opacity duration-300"
-                  />
-                ) : (
-                  <span key={org.id} className="text-sm font-medium text-muted-foreground">
-                    {org.name}
-                  </span>
-                )
-              )}
+              {highlightedOrgs.filter((org) => org.logo).map((org) => (
+                <img
+                  key={org.id}
+                  src={org.logo!}
+                  alt={org.name}
+                  title={org.name}
+                  className="h-8 object-contain opacity-50 hover:opacity-80 transition-opacity duration-300"
+                />
+              ))}
             </div>
           </div>
         )}
@@ -159,48 +174,12 @@ const CV = () => {
         )}
 
         {/* ── Education ── */}
-        {education && education.length > 0 && (
+        {educationGroups.length > 0 && (
           <Section title="Education" delay="0.28s">
-            <div className="space-y-6">
-              {education.map((edu) => {
-                const org = (organizations ?? []).find((o) => o.id === edu.organization_id);
-                return (
-                  <Link
-                    key={edu.id}
-                    to={`/education/${edu.id}`}
-                    className="group flex items-start gap-5 p-5 border border-border hover:border-primary/30 bg-card transition-all duration-300"
-                  >
-                    {org?.logo && (
-                      <img
-                        src={org.logo}
-                        alt={org.name}
-                        className="h-8 w-8 object-contain opacity-50 group-hover:opacity-80 transition-opacity mt-0.5 flex-shrink-0 dark:invert"
-                      />
-                    )}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-start justify-between gap-4 flex-wrap">
-                        <div>
-                          <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
-                            {edu.degree}
-                            {edu.specialization && (
-                              <span className="font-normal text-muted-foreground">
-                                {" "}· {edu.specialization}
-                              </span>
-                            )}
-                          </p>
-                          <p className="text-xs text-muted-foreground mt-0.5">{edu.institution}</p>
-                        </div>
-                        <span className="text-[10px] text-muted-foreground/60 uppercase tracking-wider flex-shrink-0">
-                          {edu.year}
-                        </span>
-                      </div>
-                      {edu.short && (
-                        <p className="text-xs text-muted-foreground mt-2 leading-relaxed">{edu.short}</p>
-                      )}
-                    </div>
-                  </Link>
-                );
-              })}
+            <div className="space-y-10">
+              {educationGroups.map((group) => (
+                <EducationGroupBlock key={group.organization_id ?? group.institution} group={group} />
+              ))}
             </div>
           </Section>
         )}
@@ -264,53 +243,54 @@ const ExperienceGroupCard = ({ group }: { group: ExperienceGroup }) => {
   const [start, end] = group.period.split("–").map((s) => s.trim());
 
   return (
-    <div className="flex items-start gap-5">
-      {/* Logo column */}
-      <div className="flex-shrink-0 w-10 pt-0.5">
-        {org?.logo ? (
-          <img
-            src={org.logo}
-            alt={org.name}
-            className="h-8 w-8 object-contain opacity-50 dark:invert"
-          />
-        ) : (
-          <div className="h-8 w-8 rounded-sm bg-border/40" />
-        )}
+    <div>
+      <div className="flex items-baseline justify-between gap-4 mb-3 flex-wrap">
+        <p className="text-sm font-semibold text-foreground">{org?.name ?? "—"}</p>
+        <span className="text-[10px] text-muted-foreground/60 uppercase tracking-wider flex-shrink-0">
+          {start} — {end}
+        </span>
       </div>
-
-      {/* Content column */}
-      <div className="flex-1 min-w-0">
-        <div className="flex items-baseline justify-between gap-4 mb-3 flex-wrap">
-          <p className="text-sm font-semibold text-foreground">
-            {org?.name ?? "—"}
-          </p>
-          <span className="text-[10px] text-muted-foreground/60 uppercase tracking-wider flex-shrink-0">
-            {start} — {end}
-          </span>
-        </div>
-
-        <div className="space-y-4 pl-0 border-l border-border/50 ml-0 pl-4">
-          {group.roles.map((role) => (
-            <Link
-              key={role.id}
-              to={`/experience/${role.id}`}
-              className="group block"
-            >
-              <p className="text-sm text-foreground group-hover:text-primary transition-colors font-medium">
-                {role.role}
-              </p>
-              {role.short && (
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                  {role.short}
-                </p>
-              )}
-            </Link>
-          ))}
-        </div>
+      <div className="space-y-4 border-l border-border/50 pl-4">
+        {group.roles.map((role) => (
+          <Link key={role.id} to={`/experience/${role.id}`} className="group block">
+            <p className="text-sm text-foreground group-hover:text-primary transition-colors font-medium">
+              {role.role}
+            </p>
+            {role.short && (
+              <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{role.short}</p>
+            )}
+          </Link>
+        ))}
       </div>
     </div>
   );
 };
+
+const EducationGroupBlock = ({ group }: { group: EducationGroup }) => (
+  <div>
+    <p className="text-sm font-semibold text-foreground mb-3">{group.institution}</p>
+    <div className="space-y-4 border-l border-border/50 pl-4">
+      {group.entries.map((edu) => (
+        <Link key={edu.id} to={`/education/${edu.id}`} className="group block">
+          <div className="flex items-baseline justify-between gap-4 flex-wrap">
+            <p className="text-sm text-foreground group-hover:text-primary transition-colors font-medium">
+              {edu.degree}
+              {edu.specialization && (
+                <span className="font-normal text-muted-foreground"> · {edu.specialization}</span>
+              )}
+            </p>
+            <span className="text-[10px] text-muted-foreground/60 uppercase tracking-wider flex-shrink-0">
+              {edu.year}
+            </span>
+          </div>
+          {edu.short && (
+            <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{edu.short}</p>
+          )}
+        </Link>
+      ))}
+    </div>
+  </div>
+);
 
 const SkillGroup = ({ label, skills }: { label: string; skills: string[] }) => (
   <div>

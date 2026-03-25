@@ -4,12 +4,11 @@
   start: May 2019
   end: January 2021
   location: Copenhagen, Denmark
+  short: |
+    Statutory audit of financial statements across a portfolio of clients in various industries.
   description: |
     Statutory audit of financial statements for a portfolio of clients across various industries. Responsibilities included risk assessment, internal controls evaluation, and substantive testing.
-  tools:
-    - Excel
-    - Caseware
-  skills:
+  core_expertise:
     - Financial Accounting
     - Financial Analysis
     - Auditing
@@ -17,6 +16,10 @@
     - Risk Assessment
     - Internal Controls
     - Corporate Finance
+  mathematical_foundation: []
+  implementation_stack:
+    - Excel
+    - Caseware
 
 - id: 14
   organization_id: 12
@@ -24,16 +27,19 @@
   start: September 2018
   end: April 2019
   location: Copenhagen, Denmark
+  short: |
+    Graduate program with structured rotation across audit engagements.
   description: |
     Graduate program with structured rotation across audit engagements and focus on statutory audit methodology and financial statement analysis.
-  tools:
-    - Excel
-    - Caseware
-  skills:
+  core_expertise:
     - Financial Accounting
     - Financial Analysis
     - Auditing
     - IFRS
+  mathematical_foundation: []
+  implementation_stack:
+    - Excel
+    - Caseware
 
 - id: 13
   organization_id: 12
@@ -41,15 +47,18 @@
   start: April 2018
   end: August 2018
   location: Copenhagen, Denmark
+  short: |
+    Student assistant supporting the audit team with data analysis and administrative tasks.
   description: |
     Student assistant supporting the audit team with data analysis, documentation, and administrative tasks.
-  tools:
-    - Excel
-  skills:
+  core_expertise:
     - Financial Analysis
     - Economics
     - Data Analysis
     - Attention to Detail
+  mathematical_foundation: []
+  implementation_stack:
+    - Excel
 
 - id: 12
   organization_id: 12
@@ -57,10 +66,13 @@
   start: January 2018
   end: March 2018
   location: Copenhagen, Denmark
+  short: |
+    Internship with introduction to audit processes and financial analysis.
   description: |
     Internship with introduction to audit processes, financial analysis, and professional accounting practices.
-  tools:
-    - Excel
-  skills:
+  core_expertise:
     - Economics
     - Attention to Detail
+  mathematical_foundation: []
+  implementation_stack:
+    - Excel

@@ -6,7 +6,9 @@
   location: Copenhagen, Denmark
   specialization: Business Administration, Accounting, Finance
   thesis:
-  skills:
+  short: |
+    With focus on auditing, corporate finance and financial management. Electives in Graduate International Finance, Transfer Pricing, Investments and Derivatives.
+  core_expertise:
     - Financial Accounting
     - Auditing
     - Corporate Finance
@@ -17,7 +19,8 @@
     - Transfer Pricing
     - Investments
     - Derivatives
-    - Financial Data
+  mathematical_foundation: []
+  implementation_stack: []
 
 - id: 14
   organization_id: 15
@@ -27,11 +30,14 @@
   location: Copenhagen, Denmark
   specialization:
   thesis:
-  skills:
+  short: |
+    Part-time graduate programme in accounting and management control.
+  core_expertise:
     - Financial Accounting
     - Management Accounting
     - Financial Analysis
     - Financial Forecasting
-    - Financial Data
-    - Budgeting
+    - Budgeting & Forecasting
     - Cost Accounting
+  mathematical_foundation: []
+  implementation_stack: []

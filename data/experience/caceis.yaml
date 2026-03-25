@@ -4,12 +4,15 @@
   start: "2011"
   end: "2013"
   location: Greater Munich Metropolitan Area
+  short: |
+    Internship in the Cash Management department supporting client reporting and operations.
   description: |
     Internship in the Cash Management department, supporting day-to-day operations, client reporting, and transaction processing.
-  tools:
-    - Excel
-    - Bloomberg
-  skills:
+  core_expertise:
     - Economics
     - Cash Management
     - Attention to Detail
+  mathematical_foundation: []
+  implementation_stack:
+    - Excel
+    - Bloomberg

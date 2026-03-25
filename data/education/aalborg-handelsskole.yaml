@@ -6,11 +6,15 @@
   location: Aalborg, Denmark
   specialization: Administration
   thesis:
-  skills:
+  short: |
+    Vocational education with specialization in administration.
+  core_expertise:
     - Economics
     - Problem Solving
     - Administrative Skills
     - Attention to Detail
+  mathematical_foundation: []
+  implementation_stack: []
 
 - id: 10
   organization_id: 18
@@ -20,7 +24,11 @@
   location: Aalborg, Denmark
   specialization: Matematik A, Virksomhedsøkonomi A, Finansiering C
   thesis:
-  skills:
+  short: |
+    Upper secondary business programme with focus on mathematics, business economics and finance.
+  core_expertise:
     - Economics
     - Problem Solving
     - Attention to Detail
+  mathematical_foundation: []
+  implementation_stack: []
