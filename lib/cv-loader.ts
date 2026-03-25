@@ -41,8 +41,14 @@ interface YAMLQualifications {
   skills: string[];
 }
 
+interface YAMLOrganization {
+  id: number;
+  name: string;
+  logo?: string;
+  highlight_order?: number;
+}
+
 interface YAMLExperience {
-  company: string;
   start: string;
   end: string;
   title: string;
@@ -53,10 +59,10 @@ interface YAMLExperience {
   skills: string[];
   description: string;
   id: number;
+  organization_id: number;
 }
 
 interface YAMLEducation {
-  university: string;
   name: string;
   location: string;
   degree: string;
@@ -67,6 +73,7 @@ interface YAMLEducation {
   tools: string[];
   skills: string[];
   id: number;
+  organization_id: number;
 }
 
 interface YAMLProject {
@@ -102,6 +109,7 @@ const experienceModules = import.meta.glob("@data/experience/*.yaml", { eager: t
 const educationModules = import.meta.glob("@data/education/*.yaml", { eager: true });
 const projectModules = import.meta.glob("@data/projects/*.yaml", { eager: true });
 const courseworkModules = import.meta.glob("@data/coursework/*.yaml", { eager: true });
+const organizationModules = import.meta.glob("@data/organizations/*.yaml", { eager: true });
 
 // ============================================================
 // Helper functions
@@ -125,6 +133,13 @@ let idCounter = 0;
 function generateId(): string {
   return `gen-${++idCounter}`;
 }
+
+function buildOrgMap(): Map<number, string> {
+  const orgs = extractYamlData<YAMLOrganization>(organizationModules);
+  return new Map(orgs.map((o) => [o.id, o.name]));
+}
+
+const orgMap = buildOrgMap();
 
 // ============================================================
 // Process General Info
@@ -218,11 +233,11 @@ function processExperience(): CVExperience[] {
     .sort((a, b) => b.id - a.id) // Sort by id descending (most recent first)
     .map((exp, idx) => ({
       id: `exp-${exp.id}`,
-      company: exp.company,
+      company: orgMap.get(exp.organization_id) ?? `org-${exp.organization_id}`,
       role: exp.title,
       period: `${exp.start} – ${exp.end}`,
-      description: exp.description.trim(),
-      full_description: exp.description.trim(),
+      description: exp.description?.trim() ?? "",
+      full_description: exp.description?.trim() ?? "",
       location: exp.location,
       order_index: idx,
       skills: [...(exp.programming || []), ...(exp.tools || []), ...(exp.skills || [])],
@@ -249,7 +264,8 @@ function processEducation(): CVEducation[] {
 
       return {
         id: `edu-${edu.id}`,
-        institution: edu.university,
+        institution: orgMap.get(edu.organization_id) ?? `org-${edu.organization_id}`,
+        organization_id: edu.organization_id,
         degree: `${edu.degree} ${edu.name}`,
         specialization: edu.specialization || null,
         year: edu.year,

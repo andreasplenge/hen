@@ -1,0 +1,26 @@
+- id: 11
+  organization_id: 18
+  name: Kontoruddannelse med Speciale
+  degree: EUD
+  year: 2013
+  location: Aalborg, Denmark
+  specialization: Administration
+  thesis:
+  skills:
+    - Economics
+    - Problem Solving
+    - Administrative Skills
+    - Attention to Detail
+
+- id: 10
+  organization_id: 18
+  name: Højere Handelseksamen
+  degree: HHX
+  year: 2011
+  location: Aalborg, Denmark
+  specialization: Matematik A, Virksomhedsøkonomi A, Finansiering C
+  thesis:
+  skills:
+    - Economics
+    - Problem Solving
+    - Attention to Detail

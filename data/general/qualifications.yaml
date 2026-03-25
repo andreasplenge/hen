@@ -1,22 +1,25 @@
 - native_language: Danish
-  fluent_languages: [English]
+  fluent_languages: [English, German]
   professional_language: []
 
-  core_expertise:
-    - Optimization Under Uncertainty
-    - Real-Time Algorithmic Control
-    - Distributed Energy Market Systems
-    - Probabilistic Graph Algorithms
-    - Performance-Critical Software Architecture
-  mathematical_foundation:
-    - PDE Theory
-    - Stochastic Calculus
-    - Dynamical Systems
-    - Probability & Statistical Modeling
-  implementation_stack:
+  programming:
+    - Excel
+    - Power BI
     - Python
-    - TypeScript
-    - SQL / NoSQL
-    - TensorFlow / PyTorch
-    - Kubernetes / Docker
-    - MQTT & Event-Driven Systems
+    - SQL
+
+  tools:
+    - SAP
+    - Dynamics 365
+    - Caseware
+    - Bloomberg
+
+  skills:
+    - Financial Analysis
+    - Auditing
+    - Financial Reporting
+    - Budgeting
+    - Forecasting
+    - IFRS
+    - Management Accounting
+    - Financial Controlling

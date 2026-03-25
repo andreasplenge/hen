@@ -87,6 +87,7 @@ export interface CVCoursework {
 export interface CVEducation {
   id: string;
   institution: string;
+  organization_id: number;
   degree: string;
   specialization: string | null;
   year: number;

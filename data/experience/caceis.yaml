@@ -1,0 +1,15 @@
+- id: 11
+  organization_id: 13
+  title: Praktikant
+  start: "2011"
+  end: "2013"
+  location: Greater Munich Metropolitan Area
+  description: |
+    Internship in the Cash Management department, supporting day-to-day operations, client reporting, and transaction processing.
+  tools:
+    - Excel
+    - Bloomberg
+  skills:
+    - Economics
+    - Cash Management
+    - Attention to Detail

@@ -1,0 +1,16 @@
+- id: 13
+  organization_id: 16
+  name: Financial Management
+  degree: AP Graduate
+  year: 2018
+  location: Copenhagen, Denmark
+  specialization:
+  thesis:
+  skills:
+    - Financial Management
+    - Financial Accounting
+    - Financial Analysis
+    - Financial Forecasting
+    - Financial Data
+    - Budgeting
+    - Economics

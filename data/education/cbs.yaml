@@ -1,0 +1,37 @@
+- id: 15
+  organization_id: 15
+  name: Business Administration and Auditing
+  degree: MSc
+  year: 2022
+  location: Copenhagen, Denmark
+  specialization: Business Administration, Accounting, Finance
+  thesis:
+  skills:
+    - Financial Accounting
+    - Auditing
+    - Corporate Finance
+    - IFRS
+    - Management Accounting
+    - Financial Analysis
+    - Financial Forecasting
+    - Transfer Pricing
+    - Investments
+    - Derivatives
+    - Financial Data
+
+- id: 14
+  organization_id: 15
+  name: HD Regnskab og Økonomistyring
+  degree: HD
+  year: 2020
+  location: Copenhagen, Denmark
+  specialization:
+  thesis:
+  skills:
+    - Financial Accounting
+    - Management Accounting
+    - Financial Analysis
+    - Financial Forecasting
+    - Financial Data
+    - Budgeting
+    - Cost Accounting

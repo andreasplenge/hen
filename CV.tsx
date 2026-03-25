@@ -116,43 +116,41 @@ const CV = () => {
   }
 
   if (education && education.length > 0) {
+    // Group by organization
+    const eduByOrg = education.reduce<Map<number, typeof education>>((acc, edu) => {
+      const key = edu.organization_id;
+      if (!acc.has(key)) acc.set(key, []);
+      acc.get(key)!.push(edu);
+      return acc;
+    }, new Map());
+
     sections.push({
       title: "Education",
       content: (
-        <div className="space-y-6">
-          {education.map((edu) => (
-            <div key={edu.id} className="group">
-              <div className="flex justify-between items-start flex-wrap gap-2 mb-2">
+        <div className="space-y-10">
+          {[...eduByOrg.entries()].map(([, entries]) => (
+            <div key={entries[0].organization_id} className="group">
+              <div className="flex justify-between items-start flex-wrap gap-2 mb-3">
                 <div>
-                  <h4 className="font-medium">{edu.degree}</h4>
-                  <p className="text-muted-foreground text-sm">{edu.institution}</p>
-                  {edu.specialization && (
-                    <p className="text-muted-foreground text-sm">
-                      <span className="font-mono text-xs">Specialization:</span> {edu.specialization}
-                    </p>
+                  <h4 className="font-medium">{entries[0].institution}</h4>
+                  {entries[0].location && (
+                    <p className="text-muted-foreground text-sm font-mono">{entries[0].location}</p>
                   )}
                 </div>
-                <div className="flex items-start gap-3">
-                  <span className="font-mono text-sm text-muted-foreground">{edu.year}</span>
-                  <Link
-                    to={`/education/${edu.id}`}
-                    className="p-2 text-muted-foreground hover:text-primary hover:bg-secondary rounded-md transition-colors"
-                    title="View details"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                  </Link>
-                </div>
               </div>
-              {edu.thesis && (
-                <p className="text-sm text-muted-foreground">
-                  Thesis: "{edu.thesis}"
-                </p>
-              )}
-              {edu.honours && (
-                <p className="text-sm text-muted-foreground">
-                  {edu.honours}
-                </p>
-              )}
+              <div className="space-y-3 ml-0">
+                {entries.map((edu) => (
+                  <EducationItem
+                    key={edu.id}
+                    id={edu.id}
+                    degree={edu.degree}
+                    year={edu.year}
+                    specialization={edu.specialization || ""}
+                    thesis={edu.thesis || ""}
+                    honours={edu.honours || ""}
+                  />
+                ))}
+              </div>
             </div>
           ))}
         </div>
@@ -359,6 +357,49 @@ const ExperienceItem = ({
     </div>
     {description && (
       <p className="text-sm text-muted-foreground whitespace-pre-line">{description}</p>
+    )}
+  </div>
+);
+
+const EducationItem = ({
+  id,
+  degree,
+  year,
+  specialization,
+  thesis,
+  honours,
+}: {
+  id: string;
+  degree: string;
+  year: number;
+  specialization: string;
+  thesis: string;
+  honours: string;
+}) => (
+  <div>
+    <div className="flex justify-between items-start flex-wrap gap-2">
+      <p className="text-muted-foreground">{degree}</p>
+      <div className="flex items-center gap-3">
+        <span className="font-mono text-sm text-muted-foreground">{year}</span>
+        <Link
+          to={`/education/${id}`}
+          className="p-2 text-muted-foreground hover:text-primary hover:bg-secondary rounded-md transition-colors"
+          title="View details"
+        >
+          <ExternalLink className="w-4 h-4" />
+        </Link>
+      </div>
+    </div>
+    {specialization && (
+      <p className="text-sm text-muted-foreground">
+        <span className="font-mono text-xs">Specialization:</span> {specialization}
+      </p>
+    )}
+    {thesis && (
+      <p className="text-sm text-muted-foreground">Thesis: "{thesis}"</p>
+    )}
+    {honours && (
+      <p className="text-sm text-muted-foreground">{honours}</p>
     )}
   </div>
 );

@@ -1,0 +1,39 @@
+- id: 17
+  organization_id: 11
+  title: Financial Controller
+  start: November 2023
+  end: February 2024
+  location: Copenhagen, Denmark
+  description: |
+    Financial controlling and oversight of financial processes, reporting and compliance.
+  tools:
+    - Excel
+    - Dynamics 365
+  skills:
+    - Financial Controlling
+    - Financial Reporting
+    - Budgeting
+    - Economics
+
+- id: 16
+  organization_id: 11
+  title: Controller
+  start: June 2022
+  end: February 2024
+  location: Copenhagen, Denmark
+  description: |
+    Comprehensive financial accounting, analysis, and controlling responsibilities across the organization, including management reporting and financial statement preparation.
+  tools:
+    - Excel
+    - Dynamics 365
+    - SAP
+  skills:
+    - Financial Accounting
+    - Financial Analysis
+    - Financial Controlling
+    - Budgeting
+    - Forecasting
+    - Financial Reporting
+    - Management Accounting
+    - Accounts Receivable
+    - Accounts Payable

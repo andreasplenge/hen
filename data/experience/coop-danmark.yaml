@@ -1,0 +1,12 @@
+- id: 10
+  organization_id: 14
+  title: Servicemedarbejder
+  start: "2008"
+  end: "2010"
+  location: Denmark
+  description: |
+    Customer service and operational support in a retail environment.
+  skills:
+    - Customer Service
+    - Attention to Detail
+    - Problem Solving
