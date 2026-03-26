@@ -10,6 +10,7 @@ import {
 
 export interface CVGeneralInfo {
   id: string;
+  name: string;
   title: string;
   summary: string | null;
   email: string | null;
@@ -54,6 +55,7 @@ export interface CVEducation {
   institution: string;
   degree: string;
   specialization: string | null;
+  start_year: number | null;
   year: number;
   thesis: string | null;
   honours: string | null;

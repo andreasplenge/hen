@@ -60,6 +60,7 @@ interface YAMLEducation {
   name: string;
   location: string;
   degree: string;
+  start_year?: number;
   year: number;
   specialization: string;
   thesis: string;
@@ -137,6 +138,7 @@ function processGeneralInfo(): CVGeneralInfo {
 
   return {
     id: generateId(),
+    name: `${info.firstname} ${info.lastname}`,
     title: info.identity,
     summary: info.description,
     email: info.email,
@@ -243,6 +245,7 @@ function processEducation(): CVEducation[] {
         organization_id: edu.organization_id != null ? `org-${edu.organization_id}` : null,
         degree: `${edu.degree} ${edu.name}`,
         specialization: edu.specialization || null,
+        start_year: edu.start_year ?? null,
         year: edu.year,
         thesis: edu.thesis === "unfinished" ? null : edu.thesis,
         honours: null,

@@ -2,6 +2,7 @@
   organization_id: 15
   name: Business Administration and Auditing
   degree: MSc
+  start_year: 2020
   year: 2022
   location: Copenhagen, Denmark
   specialization: Business Administration, Accounting, Finance
@@ -26,6 +27,7 @@
   organization_id: 15
   name: HD Regnskab og Økonomistyring
   degree: HD
+  start_year: 2018
   year: 2020
   location: Copenhagen, Denmark
   specialization:
