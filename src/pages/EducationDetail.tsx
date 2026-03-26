@@ -143,7 +143,7 @@ const EducationDetail = () => {
         )}
 
         <footer className="mt-20 pt-8 border-t border-border flex justify-center">
-          <img src="/sign.png" alt="Signature" className="h-14 opacity-50 hover:opacity-70 transition-opacity duration-500" />
+          <img src="/sign.png" alt="Signature" className="h-28 opacity-50 hover:opacity-70 transition-opacity duration-500" />
         </footer>
       </main>
     </div>

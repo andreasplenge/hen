@@ -122,7 +122,7 @@ const Contact = () => {
         </div>
 
         <footer className="mt-24 pt-8 border-t border-border flex justify-center fade-in-section">
-          <img src="/sign.png" alt="Signature" className="h-14 opacity-40 hover:opacity-60 transition-opacity duration-500" />
+          <img src="/sign.png" alt="Signature" className="h-28 opacity-40 hover:opacity-60 transition-opacity duration-500" />
         </footer>
       </main>
     </div>
