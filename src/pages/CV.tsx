@@ -187,7 +187,7 @@ const CV = () => {
       <GeometricBackground />
       <TimelineSidebar items={timelineItems} activeIds={activeIds} />
 
-      <main className="relative max-w-4xl mx-auto px-6 py-20 md:py-28 lg:ml-48">
+      <main className="relative max-w-4xl mx-auto px-6 py-20 md:py-28 lg:ml-80">
 
         {/* ── Highlighted org logos ── */}
         {highlightedOrgs.length > 0 && (
