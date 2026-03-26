@@ -5,7 +5,7 @@ import yaml from "@modyfi/vite-plugin-yaml";
 
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
-  base: '/',
+  base: '/hen/',
   server: {
     host: "::",
     port: 8080,
