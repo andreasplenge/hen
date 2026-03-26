@@ -267,7 +267,7 @@ const CV = () => {
           <img
             src="/sign.png"
             alt="Signature"
-            className="h-14 opacity-40 hover:opacity-60 transition-opacity duration-500"
+            className="h-28 opacity-40 hover:opacity-60 transition-opacity duration-500"
           />
         </footer>
       </main>

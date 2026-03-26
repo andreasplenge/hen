@@ -123,6 +123,7 @@ function processGeneralInfo(): CVGeneralInfo {
   if (!info) {
     return {
       id: generateId(),
+      name: "Unknown",
       title: "Unknown",
       summary: null,
       email: null,
@@ -186,7 +187,7 @@ function processOrganizations(): CVOrganization[] {
   return raw.map((org) => ({
     id: `org-${org.id}`,
     name: org.name,
-    logo: org.logo ? `/logos/${org.logo}` : null,
+    logo: org.logo ? `${import.meta.env.BASE_URL}logos/${org.logo}` : null,
     highlight_order: org.highlight_order ?? null,
   }));
 }
