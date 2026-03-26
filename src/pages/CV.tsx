@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import GeometricBackground from "@/components/GeometricBackground";
 import {
   useCVGeneralInfo,
@@ -224,7 +223,7 @@ const CV = () => {
                   src={org.logo!}
                   alt={org.name}
                   title={org.name}
-                  className="h-8 object-contain opacity-50 hover:opacity-80 transition-opacity duration-300"
+                  className="h-8 object-contain"
                 />
               ))}
             </div>
@@ -233,22 +232,22 @@ const CV = () => {
 
         {/* ── Header ── */}
         <header className="mb-10 fade-in-section" style={{ animationDelay: "0.06s" }}>
-          <div className="flex items-start justify-between flex-wrap gap-6">
-            <div>
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground mb-2">
-                {generalInfo?.name}
-              </h1>
-              <p className="text-base text-primary font-medium tracking-widest uppercase">
-                {generalInfo?.title ?? "Software Engineer"}
-              </p>
-            </div>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 px-4 py-2 border border-border rounded-md text-sm text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors self-start mt-2"
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground mb-2">
+            {generalInfo?.name}
+          </h1>
+          <p className="text-base text-primary font-medium tracking-widest uppercase mb-2">
+            {generalInfo?.title ?? "Software Engineer"}
+          </p>
+          {generalInfo?.linkedin && (
+            <a
+              href={`https://${generalInfo.linkedin}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              Contact
-            </Link>
-          </div>
+              {generalInfo.linkedin}
+            </a>
+          )}
         </header>
 
         {/* ── Summary ── */}
@@ -331,7 +330,7 @@ const ExperienceGroupCard = ({ id, group }: { id: string; group: ExperienceGroup
     <div id={id}>
       <div className="flex items-center gap-3 mb-3">
         {org?.logo && (
-          <img src={org.logo} alt={org.name} className="h-5 w-5 object-contain opacity-60 dark:invert flex-shrink-0" />
+          <img src={org.logo} alt={org.name} className="h-5 w-5 object-contain dark:invert flex-shrink-0" />
         )}
         <p className="text-sm font-semibold text-foreground">{org?.name ?? "—"}</p>
       </div>
@@ -339,9 +338,9 @@ const ExperienceGroupCard = ({ id, group }: { id: string; group: ExperienceGroup
         {group.roles.map((role) => {
           const [rStart, rEnd] = role.period.split("–").map((s) => s.trim());
           return (
-            <Link key={role.id} to={`/experience/${role.id}`} className="group block">
+            <div key={role.id}>
               <div className="flex items-baseline justify-between gap-4 flex-wrap">
-                <p className="text-sm text-foreground group-hover:text-primary transition-colors font-medium">
+                <p className="text-sm text-foreground font-medium">
                   {role.role}
                 </p>
                 <span className="text-[10px] text-muted-foreground/60 uppercase tracking-wider flex-shrink-0">
@@ -351,7 +350,7 @@ const ExperienceGroupCard = ({ id, group }: { id: string; group: ExperienceGroup
               {role.short && (
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{role.short}</p>
               )}
-            </Link>
+            </div>
           );
         })}
       </div>
@@ -363,15 +362,15 @@ const EducationGroupBlock = ({ id, group }: { id: string; group: EducationGroup 
   <div id={id}>
     <div className="flex items-center gap-3 mb-3">
       {group.logo && (
-        <img src={group.logo} alt={group.institution} className="h-5 w-5 object-contain opacity-60 dark:invert flex-shrink-0" />
+        <img src={group.logo} alt={group.institution} className="h-5 w-5 object-contain dark:invert flex-shrink-0" />
       )}
       <p className="text-sm font-semibold text-foreground">{group.institution}</p>
     </div>
     <div className="space-y-4 border-l border-border/50 pl-4">
       {group.entries.map((edu) => (
-        <Link key={edu.id} to={`/education/${edu.id}`} className="group block">
+        <div key={edu.id}>
           <div className="flex items-baseline justify-between gap-4 flex-wrap">
-            <p className="text-sm text-foreground group-hover:text-primary transition-colors font-medium">
+            <p className="text-sm text-foreground font-medium">
               {edu.degree}
               {edu.specialization && (
                 <span className="font-normal text-muted-foreground"> · {edu.specialization}</span>
@@ -384,7 +383,7 @@ const EducationGroupBlock = ({ id, group }: { id: string; group: EducationGroup 
           {edu.short && (
             <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{edu.short}</p>
           )}
-        </Link>
+        </div>
       ))}
     </div>
   </div>

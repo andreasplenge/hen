@@ -238,7 +238,7 @@ const CV = () => {
           <div className="flex items-start justify-between flex-wrap gap-6">
             <div>
               <h1 className="text-4xl md:text-5xl font-light tracking-tight mb-3">
-                Andreas Plenge
+                Henrik Bak Rasmussen
               </h1>
               <p className="text-lg text-muted-foreground font-light">
                 {generalInfo?.title || "Software Engineer"}

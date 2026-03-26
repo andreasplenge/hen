@@ -1,6 +1,6 @@
-# Andreas Plenge - Personal CV
+# Henrik Bak Rasmussen - Personal CV
 
-Personal portfolio and CV website for Andreas Plenge - Coding Mathematician & Quantitative Engineer.
+Personal CV website for Henrik Bak Rasmussen - Reporting Manager.
 
 ## Tech Stack
 
@@ -8,7 +8,6 @@ Personal portfolio and CV website for Andreas Plenge - Coding Mathematician & Qu
 - Vite
 - Tailwind CSS
 - shadcn/ui
-- Supabase
 
 ## Development
 
@@ -19,4 +18,4 @@ npm run dev
 
 ## Deployment
 
-The site is deployed via GitHub Pages to [andreasplenge.com](https://andreasplenge.com).
+The site is deployed via GitHub Pages.

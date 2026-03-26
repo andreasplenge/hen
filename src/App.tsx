@@ -7,7 +7,6 @@ import CV from "./pages/CV";
 import ExperienceDetail from "./pages/ExperienceDetail";
 import EducationDetail from "./pages/EducationDetail";
 import NotFound from "./pages/NotFound";
-import Contact from "./pages/Contact";
 import { useAnalytics } from "./hooks/use-analytics";
 
 const Analytics = () => { useAnalytics(); return null; };
@@ -25,7 +24,6 @@ const App = () => (
             <Route path="/" element={<CV />} />
             <Route path="/experience/:id" element={<ExperienceDetail />} />
             <Route path="/education/:id" element={<EducationDetail />} />
-            <Route path="/contact" element={<Contact />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
