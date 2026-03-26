@@ -260,17 +260,28 @@ const CV = () => {
           </div>
         )}
 
-        {/* ── Experience & Education (unified, sorted by year) ── */}
-        {allGroups.length > 0 && (
-          <Section title="Experience & Education" delay="0.20s">
+        {/* ── Experience ── */}
+        {allGroups.some((i) => i.type === "experience") && (
+          <Section title="Experience" delay="0.20s">
             <div className="space-y-10">
-              {allGroups.map((item) =>
-                item.type === "experience" ? (
+              {allGroups
+                .filter((i): i is Extract<typeof i, { type: "experience" }> => i.type === "experience")
+                .map((item) => (
                   <ExperienceGroupCard key={item.id} id={item.id} group={item.group} />
-                ) : (
+                ))}
+            </div>
+          </Section>
+        )}
+
+        {/* ── Education ── */}
+        {allGroups.some((i) => i.type === "education") && (
+          <Section title="Education" delay="0.28s">
+            <div className="space-y-10">
+              {allGroups
+                .filter((i): i is Extract<typeof i, { type: "education" }> => i.type === "education")
+                .map((item) => (
                   <EducationGroupBlock key={item.id} id={item.id} group={item.group} />
-                )
-              )}
+                ))}
             </div>
           </Section>
         )}
