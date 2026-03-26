@@ -165,8 +165,8 @@ const CV = () => {
   const educationGroups = groupEducation(education ?? [], organizations ?? []);
 
   type UnifiedItem =
-    | { type: "experience"; id: string; label: string; years: string; endDate: Date; group: ExperienceGroup }
-    | { type: "education"; id: string; label: string; years: string; endDate: Date; group: EducationGroup };
+    | { type: "experience"; id: string; label: string; years: string; startDate: Date; endDate: Date; group: ExperienceGroup }
+    | { type: "education"; id: string; label: string; years: string; startDate: Date; endDate: Date; group: EducationGroup };
 
   const allGroups: UnifiedItem[] = [
     ...experienceGroups.map((g): UnifiedItem => {
@@ -176,6 +176,7 @@ const CV = () => {
         id: `tl-exp-${g.organization?.id ?? "none"}`,
         label: g.organization?.name ?? "—",
         years: `${extractYear(s)} – ${extractYear(e)}`,
+        startDate: parseEndDate(s),
         endDate: g.endDate,
         group: g,
       };
@@ -188,11 +189,15 @@ const CV = () => {
         id: `tl-edu-${g.organization_id ?? g.institution}`,
         label: g.institution,
         years: minStart !== maxEnd ? `${minStart} – ${maxEnd}` : `${maxEnd}`,
+        startDate: new Date(minStart, 0),
         endDate: new Date(maxEnd, 11),
         group: g,
       };
     }),
-  ].sort((a, b) => b.endDate.getTime() - a.endDate.getTime());
+  ].sort((a, b) =>
+    b.startDate.getTime() - a.startDate.getTime() ||
+    b.endDate.getTime() - a.endDate.getTime()
+  );
 
   const timelineItems = allGroups.map(({ id, label, years }) => ({ id, label, years }));
   const activeIds = useVisibleSections(timelineItems.map((t) => t.id));
