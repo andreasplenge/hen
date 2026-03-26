@@ -21,10 +21,15 @@ function extractYear(dateStr: string): string {
   return match ? match[0] : dateStr;
 }
 
+const MONTHS = ["january","february","march","april","may","june","july","august","september","october","november","december"];
+
 function parseEndDate(end: string): Date {
-  if (end.toLowerCase() === "present") return new Date(9999, 11);
-  const d = new Date(end);
-  return isNaN(d.getTime()) ? new Date(0) : d;
+  const lower = end.toLowerCase().trim();
+  if (lower === "present") return new Date(9999, 11);
+  const yearMatch = lower.match(/\d{4}/);
+  const year = yearMatch ? parseInt(yearMatch[0]) : 0;
+  const monthIndex = MONTHS.findIndex((m) => lower.includes(m));
+  return new Date(year, monthIndex >= 0 ? monthIndex : 0);
 }
 
 interface EducationGroup {
@@ -86,7 +91,15 @@ function groupExperiences(
     group.endDate = parseEndDate(laterEnd);
   }
 
-  return [...groups.values()].sort((a, b) => b.endDate.getTime() - a.endDate.getTime());
+  return [...groups.values()]
+    .map((g) => ({
+      ...g,
+      roles: g.roles.sort((a, b) =>
+        parseEndDate(b.period.split("–")[1]?.trim() ?? "").getTime() -
+        parseEndDate(a.period.split("–")[1]?.trim() ?? "").getTime()
+      ),
+    }))
+    .sort((a, b) => b.endDate.getTime() - a.endDate.getTime());
 }
 
 // -------------------------------------------------------
@@ -152,25 +165,37 @@ const CV = () => {
   const experienceGroups = groupExperiences(experience ?? [], organizations ?? []);
   const educationGroups = groupEducation(education ?? [], organizations ?? []);
 
-  const timelineItems = [
-    ...experienceGroups.map((g) => {
+  type UnifiedItem =
+    | { type: "experience"; id: string; label: string; years: string; endDate: Date; group: ExperienceGroup }
+    | { type: "education"; id: string; label: string; years: string; endDate: Date; group: EducationGroup };
+
+  const allGroups: UnifiedItem[] = [
+    ...experienceGroups.map((g): UnifiedItem => {
       const [s, e] = g.period.split("–").map((x) => x.trim());
       return {
+        type: "experience",
         id: `tl-exp-${g.organization?.id ?? "none"}`,
         label: g.organization?.name ?? "—",
         years: `${extractYear(s)} – ${extractYear(e)}`,
+        endDate: g.endDate,
+        group: g,
       };
     }),
-    ...educationGroups.map((g) => {
+    ...educationGroups.map((g): UnifiedItem => {
       const minStart = g.entries.reduce((min, e) => Math.min(min, e.start_year ?? e.year), Infinity);
       const maxEnd = g.entries.reduce((max, e) => Math.max(max, e.year), -Infinity);
       return {
+        type: "education",
         id: `tl-edu-${g.organization_id ?? g.institution}`,
         label: g.institution,
         years: minStart !== maxEnd ? `${minStart} – ${maxEnd}` : `${maxEnd}`,
+        endDate: new Date(maxEnd, 11),
+        group: g,
       };
     }),
-  ];
+  ].sort((a, b) => b.endDate.getTime() - a.endDate.getTime());
+
+  const timelineItems = allGroups.map(({ id, label, years }) => ({ id, label, years }));
   const activeIds = useVisibleSections(timelineItems.map((t) => t.id));
 
   if (isLoading) {
@@ -235,28 +260,17 @@ const CV = () => {
           </div>
         )}
 
-        {/* ── Experience ── */}
-        {experienceGroups.length > 0 && (
-          <Section title="Experience" delay="0.20s">
+        {/* ── Experience & Education (unified, sorted by year) ── */}
+        {allGroups.length > 0 && (
+          <Section title="Experience & Education" delay="0.20s">
             <div className="space-y-10">
-              {experienceGroups.map((group, i) => (
-                <ExperienceGroupCard key={i} id={`tl-exp-${group.organization?.id ?? "none"}`} group={group} />
-              ))}
-            </div>
-          </Section>
-        )}
-
-        {/* ── Education ── */}
-        {educationGroups.length > 0 && (
-          <Section title="Education" delay="0.28s">
-            <div className="space-y-10">
-              {educationGroups.map((group) => (
-                <EducationGroupBlock
-                  key={group.organization_id ?? group.institution}
-                  id={`tl-edu-${group.organization_id ?? group.institution}`}
-                  group={group}
-                />
-              ))}
+              {allGroups.map((item) =>
+                item.type === "experience" ? (
+                  <ExperienceGroupCard key={item.id} id={item.id} group={item.group} />
+                ) : (
+                  <EducationGroupBlock key={item.id} id={item.id} group={item.group} />
+                )
+              )}
             </div>
           </Section>
         )}
