@@ -265,7 +265,7 @@ const CV = () => {
         {/* ── Footer ── */}
         <footer className="mt-20 pt-8 border-t border-border flex justify-center fade-in-section">
           <img
-            src="/sign.png"
+            src={`${import.meta.env.BASE_URL}sign.png`}
             alt="Signature"
             className="h-28 opacity-40 hover:opacity-60 transition-opacity duration-500"
           />
@@ -372,7 +372,7 @@ const TimelineSidebar = ({
   items: { id: string; label: string; years: string }[];
   activeIds: Set<string>;
 }) => (
-  <nav className="fixed left-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col z-20">
+  <nav className="fixed left-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col z-20">
     <div className="relative flex flex-col">
       <div className="absolute left-[calc(5rem+3px)] top-3 bottom-3 w-px bg-border/50" />
       {items.map((item) => {
